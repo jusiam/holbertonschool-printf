@@ -3,7 +3,7 @@
 #include <stdarg.h>
 
 /**
- * _printf - Prints formatted output to stdout
+ * _printf - create printf function
  * @format: The format str
  *
  * Return: The number of char printed
@@ -58,6 +58,6 @@ int _printf(const char *format, ...)
         ptr++;                                       /* Move to next char in format str */
     }
 
-    va_end(args);                                    /* End */
+    va_end(args);                                    
     return (count);
 }
