@@ -1,9 +1,8 @@
-
 #include "main.h"
 #include <stdarg.h>
 
 /**
- * _printf - create printf function
+ * _printf - Prints formatted output to stdout
  * @format: The format str
  *
  * Return: The number of char printed
