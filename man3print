@@ -1,0 +1,75 @@
+.TH PRITNF 3 "MARCH 2024"
+
+.SH NAME
+.B _printf
+\- Print formatted output to stdout
+
+.SH SYNOPSIS
+.B #include "main.h"
+.br
+.in +4
+.B int _printf(const char *format, ...);
+.br
+.in
+
+.SH DESCRIPTION
+The
+.B _printf
+function prints formatted output to the standard output (stdout).
+It accepts a format string followed by a variable number of arguments, which
+are inserted into the format string based on format specifiers.
+
+.SH RETURN VALUE
+Upon successful completion, _printf returns the numbers of characters printed.
+If an error occurs, it returns -1.
+
+.SH FORMAT SPECIFIERS
+The format string may contain conversion specifiers, each beginning with a '%'
+character, followed by a conversion specifier character.
+
+the following converion specifiers are supported:
+
+.TP
+.B %c
+Print a single character.
+
+.TP
+.B %s
+Print a null-terminated string.
+
+.TP
+.B %%
+Print a literal '%'.
+
+.TP
+.B %d
+Print a signed decimal integer.
+
+.TP
+.B %i
+Print a signed decimal integer.
+
+.SH EXAMPLES
+Example usage of _printf function:
+
+.in +4
+.nf
+.sp
+\fB_printf("Hello, %s!\n", "world");\fR
+.br
+Prints: Hello, world!
+.sp
+\fB_printf("Value: %d\n", 42);\fR
+.br
+Prints: Value: 42
+.fi
+.in
+
+.SH SEE ALSO
+.B printf(3), fprintf(3), sprintf(3), snprintf(3)
+
+.SH AUTHOR
+This version of _printf was written by Ghofrane Amemi and Oussema Turki.
+
+.SH COPYRIGHT
+Anyone can use it. It's totally free.
