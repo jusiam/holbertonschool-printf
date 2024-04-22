@@ -9,30 +9,27 @@
  */
 int _printf(const char *format, ...)
 {
-    va_list args;                                    /* Var arguments list */
-    int count = 0;                                   /* Init counter for chars printed */
-    const char *ptr = format;                        /* Init pointer to format str */
-    int (*func_p)(va_list) = NULL;                   /* Init function pointer to NULL */
-
-    if (format == NULL)                              /* Check if format str is NULL */
-        return (-1);
-
-    va_start(args, format);                          /* Start var arguments list */
-
-    while (*ptr)                                     /* Loop through format str */
+va_list args;                                    /* Var arguments list */
+int count = 0;                                   /* Init counter */
+const char *ptr = format;                        /* Init pointer */
+int (*func_p)(va_list) = NULL;                   /* Init func pointer */
+if (format == NULL)                              /* Check if format NULL */
+return (-1);
+va_start(args, format);                          /* Start var */
+while (*ptr)                                     /* Loop through format str */
     {
-        if (*ptr != '%')                             /* If current char is not '%' */
+        if (*ptr != '%')                             /* If char not '%' */
         {
             _putchar(*ptr);                          /* Print the char */
             count++;                                 /* Increment char count */
         }
-        else                                         /* If current char is '%' */
+        else                                         /* If char is '%' */
         {
             ptr++;                                   /* Move to next char */
             if (*ptr == '\0')                        /* If next char is NULL */
                 return (-1);                         /* Return -1 */
 
-            func_p = get_func(*ptr);                 /* Get function pointer for specifier */
+            func_p = get_func(*ptr);                 /* function pointer  */
 
             if (func_p != NULL)                      /* If valid function pointer found */
                 count += func_p(args);               /* Call function and update count */
