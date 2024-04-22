@@ -17,20 +17,18 @@ if (format == NULL)                              /* Check if format NULL */
 return (-1);
 va_start(args, format);                          /* Start var */
 while (*ptr)                                     /* Loop through format str */
+{
+    if (*ptr != '%')                             /* If char not '%' */
     {
-        if (*ptr != '%')                             /* If char not '%' */
-        {
-            _putchar(*ptr);                          /* Print the char */
-            count++;                                 /* Increment char count */
-        }
-        else                                         /* If char is '%' */
-        {
-            ptr++;                                   /* Move to next char */
-            if (*ptr == '\0')                        /* If next char is NULL */
-                return (-1);                         /* Return -1 */
-
+        _putchar(*ptr);                          /* Print the char */
+        count++;                                 /* Increment char count */
+    }
+    else                                         /* If char is '%' */
+    {
+        ptr++;                                   /* Move to next char */
+        if (*ptr == '\0')                        /* If next char is NULL */
+            return (-1);                         /* Return -1 */
             func_p = get_func(*ptr);                 /* function pointer  */
-
             if (func_p != NULL)                      /* If valid function pointer found */
                 count += func_p(args);               /* Call function and update count */
             else                                     /* If no valid function pointer found */
