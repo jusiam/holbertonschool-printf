@@ -1,45 +1,50 @@
 #include "main.h"
+#include <stdarg.h>
 
 /**
- * _printf - my own printf function.
- * @format: character string.
- * Returns: the number of characters printed
-*/
+ * _printf - create my own printf function
+ * @format: The format string
+ *
+ * Return: The number of characters printed
+ */
+
 int _printf(const char *format, ...)
 {
+	int count = 0;
+	int (*function)(va_list);
+	const char *p;
+
 	va_list args;
-	int i, j, count = 0;
-	check_t f[] = {
-		{'c', print_c},
-		{'s', print_s},
-		{'%', print_percent},
-		{'d', print_d},
-		{'i', print_i},
-		{0, NULL}
-		};
+
 	va_start(args, format);
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
-		return (-1);
-	for (i = 0; format && format[i]; i++)
+
+	for (p = format; *p; p++)
 	{
-		if (format[i] == '%' && format[i + 1] != 'K' && format[i + 1] != '!')
+		if (*p == '%')
 		{
-			i++;
-			for (j = 0; f[j].letter; j++)
+			p++;
+			function = get_functions(p);
+
+			if (function != NULL)
 			{
-				if (f[j].letter == format[i])
+				count += function(args);
+			}
+			else
+			{
+				if (p[1])
 				{
-					count += f[j].f(args);
-					break;
+				count += _putchar('%');
+				count += _putchar(*p);
 				}
 			}
 		}
 		else
 		{
-			_putchar(format[i]);
-			count++;
+			count += _putchar(*p);
 		}
 	}
+
 	va_end(args);
 	return (count);
 }
+
