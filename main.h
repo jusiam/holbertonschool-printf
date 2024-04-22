@@ -1,33 +1,29 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <stdio.h>
-#include <unistd.h>
 #include <stdarg.h>
+#include <stdio.h>
+#include <string.h>
+
+/* Function prototypes */
+int _printf(const char *format, ...);
+int print_string(va_list args);
+int print_character(va_list args);
+int print_percent(va_list args);
+int (*get_func(char format))(va_list);
+int _putchar(char c);
+int print_integer(va_list args);
+int print_number(int n);
 
 /**
- * struct type - Struct used for stock type detected.
- * @letter: Will contain type.
- * @f: The function associated for each type.
-*/
-
-typedef struct type
+ * struct fmt - struct declaration.
+ * @fs: format specifier.
+ * @p: pointer to function.
+ */
+typedef struct fmt
 {
-	char letter;
-	int (*f)();
-} check_t;
+char fs;
+int (*p)(va_list);
+} f;
 
-int _printf(const char *format, ...);
-
-/* Specifiers functions */
-int print_c(va_list args);
-int print_s(va_list args);
-int print_percent(void);
-int print_d(va_list args);
-int print_i(va_list args);
-
-/* Helper functions */
-int _putchar(char c);
-int _strlen(char *s);
-
-#endif
+#endif /* MAIN_H */
