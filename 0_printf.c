@@ -49,8 +49,8 @@ count += 2;                      /* Increment count by 2 */
 }
 }
 }
-ptr++;                                       /* Move to next char in format str */
+ptr++;
 }
-va_end(args);                                    /* End */
+va_end(args);
 return (count);
 }
