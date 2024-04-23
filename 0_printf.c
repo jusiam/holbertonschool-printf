@@ -13,11 +13,11 @@ const char *ptr = format;
 int (*func_p)(va_list) = NULL;
 if (format == NULL)
 return (-1);
-va_start(args, format);                          /* Start var */
- while (*ptr)
+va_start(args, format);
+while (*ptr)
 {
 if (*ptr != '%')
-{_putchar(*ptr);                          /* Print the char */
+{_putchar(*ptr);
 count++;
 }
 else
