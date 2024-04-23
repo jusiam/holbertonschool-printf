@@ -84,10 +84,10 @@ _putchar('0');          /* Print '0' for zero */
 return (1);             /* Return 1 for the '0' character */
 }
 if (n / 10)
-count += print_number(n / 10); /* Recursively call print_number for each digit */
+count += print_number(n / 10);
 if (n < 0)
-_putchar('0' - (n % 10)); /* Print each digit as a negative number */
+_putchar('0' - (n % 10));
 else
-_putchar('0' + (n % 10)); /* Print each digit as a positive number */
+_putchar('0' + (n % 10));
 return (count + 1);
 }
