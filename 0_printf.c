@@ -14,9 +14,9 @@ int (*func_p)(va_list) = NULL;
 if (format == NULL)
 return (-1);
 va_start(args, format);                          /* Start var */
-while (*ptr)
+ while (*ptr)
 {
-  if (*ptr != '%')
+if (*ptr != '%')
 {_putchar(*ptr);                          /* Print the char */
 count++;
 }
