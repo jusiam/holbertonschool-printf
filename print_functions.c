@@ -58,23 +58,17 @@ int print_percent(va_list args)
  */
 int print_integer(va_list args)
 {
-    int num = va_arg(args, int);
-    int count = 0;
-
-    /* Handle negative numbers */
-    if (num < 0)
-    {
-        _putchar('-');          /* Print a minus sign for negative numbers */
-        count++;                /* Increment count for the minus sign */
-        num = -num;             /* Convert the number to positive */
-    }
-
-    /* Print the positive number */
-    count += print_number(num);
-
-    return (count);
+int num = va_arg(args, int);
+int count = 0;
+if (num < 0)
+{
+_putchar('-');          /* Print a minus sign for negative numbers */
+count++;                /* Increment count for the minus sign */
+num = -num;             /* Convert the number to positive */
 }
-
+count += print_number(num);
+return (count);
+}
 /**
  * print_number - Prints a number
  * @n: The number to print
